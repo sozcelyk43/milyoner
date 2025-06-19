@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0c1445">
+  <meta name="description" content="Kim Milyoner Olmak İster? bilgi yarışması oyunu">
+  <title>Kim Milyoner Olmak İster?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+        const manifest = { name: "Kim Milyoner Olmak İster?", short_name: "Milyoner", description: "Bilgi yarışması oyunu", start_url: ".", display: "standalone", background_color: "#0c1445", theme_color: "#0c1445", icons: [ { src: "assets/icons/icon-192.png", sizes: "192x192", type: "image/png" }, { src: "assets/icons/icon-512.png", sizes: "512x512", type: "image/png" } ] };
+        const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/json' }); const manifestURL = URL.createObjectURL(manifestBlob);
+        const link = document.createElement('link'); link.rel = 'manifest'; link.href = manifestURL; document.head.appendChild(link);
+    } catch (error) {
+        console.error("PWA Manifest oluşturma hatası:", error);
+    }
+  </script>
+</head>
+<body>
+<audio id="introMusic" preload="metadata"> <source src="sounds/intro.mp3" type="audio/mpeg"> Tarayıcınız ses etiketini desteklemiyor. </audio>
+<audio id="correctSound" preload="metadata"> <source src="sounds/correct.mp3" type="audio/mpeg"> Tarayıcınız ses etiketini desteklemiyor. </audio>
+<audio id="wrongSound" preload="metadata"> <source src="sounds/wrong.mp3" type="audio/mpeg"> Tarayıcınız ses etiketini desteklemiyor. </audio>
+<audio id="countdownSound" preload="metadata"> <source src="sounds/countdown.mp3" type="audio/mpeg"> Tarayıcınız ses etiketini desteklemiyor. </audio>
+
+<div class="container" id="introScreenEl" style="display: flex;"> <div class="intro-logo">
+  <img src="top-image.png" class="top-image" alt="Yarışma Logosu" loading="lazy" onerror="this.style.display='none'">
+</div>
+  <div class="intro-buttons-container">
+    <button class="rules-button" id="showRulesButton" aria-label="Kuralları göster">📜 Kurallar</button>
+    <button class="start-button" id="startButton" aria-label="Yarışmayı başlat">🎬 Yarışmaya Başla</button>
+  </div>
+  <div style="position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 12px; color: rgba(255,255,255,0.7);">
+    &copy; 2025 Ozcelik inc.
+  </div>
+</div>
+
+<div id="rulesModalEl" class="modal" role="dialog" aria-modal="true" aria-labelledby="rulesModalTitle" style="display: none;"> <div class="modal-content">
+  <h1 id="rulesModalTitle" class="modal-title">📝 Yarışma Kuralları 📝</h1>
+  <div class="rules-container-modal">
+    <ul>
+      <li>🧠 Toplam 12 soru 60 saniye içinde cevaplanmalı.</li>
+      <li>✅ Doğru cevapta bir sonraki soruya geçersiniz.</li>
+      <li>❌ Yanlış cevapta veya süre biterse elenirsiniz.</li>
+      <li>✂️ <span>Yarı Yarıya Jokeri:</span> İki tane yanlış cevap silinir.</li>
+      <li>👥 <span>Seyirci Jokeri:</span> %80 ihtimalle doğru cevabı verir.</li>
+      <li>📞 <span>Telefon Jokeri:</span> %75 ihtimalle doğru cevabı söyler.</li>
+      <li>🎓 <span>Uzman Yorumu Jokeri:</span> %90 ihtimalle doğru cevabı bilir.</li>
+    </ul>
+  </div>
+  <div id="rulesModalButtons" class="modal-buttons-style">
+    <button id="closeRulesModalButton" class="modal-button" aria-label="Kurallar penceresini kapat">Kapat</button>
+  </div>
+</div>
+</div>
+
+<div id="exitConfirmModalEl" class="modal" role="dialog" aria-modal="true" aria-labelledby="exitConfirmTitle" style="display: none;"> <div class="modal-content">
+  <h1 id="exitConfirmTitle" class="modal-title">Emin misiniz?</h1>
+  <p>Uygulamadan çıkmak istediğinize emin misiniz?</p>
+  <div id="exitConfirmButtons" class="modal-buttons-style">
+    <button id="confirmExitButton" class="modal-button confirm" aria-label="Çıkışı onayla">Evet</button>
+    <button id="cancelExitButton" class="modal-button cancel" aria-label="Çıkışı iptal et">Hayır</button>
+  </div>
+</div>
+</div>
+
+
+<div id="quizScreenEl" class="container" style="display: none;"> <button id="soundToggle" class="sound-toggle-button" aria-label="Sesi aç veya kapat">🔊</button> <div id="jokerModalEl" class="modal" role="dialog" aria-modal="true" aria-labelledby="jokerMessage"> <div class="modal-content"> <p id="jokerMessage" aria-live="assertive"></p> <div id="modalButtons"></div> </div> </div> <div id="gameOverModalEl" class="modal" role="dialog" aria-modal="true" aria-labelledby="gameOverMessage"> <div class="modal-content">
+  <p id="gameOverMessage" aria-live="assertive">❌ Elendiniz!</p>
+  <div id="gameOverButtons" class="modal-buttons-style">
+    <button id="gameOverHomeButton" class="modal-button" aria-label="Ana menüye dön">🏠 Ana Menüye Dön</button>
+  </div>
+</div>
+</div>
+
+  <div class="quiz-top-section">
+    <div id="timer" role="timer" aria-live="polite" aria-label="Kalan süre: 60 saniye">60</div>
+    <div id="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" aria-label="Yarışma ilerleme çubuğu"></div>
+  </div>
+
+  <div class="quiz-middle-section">
+    <div id="question"></div>
+    <div id="options"></div>
+  </div>
+
+  <div class="quiz-bottom-section">
+    <div id="status" role="status" aria-live="polite"></div>
+    <div id="jokers">
+      <button class="joker" id="fifty" aria-label="Yarı Yarıya Jokeri">✂️ Yarı Yarıya</button> <button class="joker" id="audience" aria-label="Seyirci Jokeri">👥 Seyirci</button> <button class="joker" id="phone" aria-label="Telefon Jokeri">📞 Telefon</button> <button class="joker" id="extra" aria-label="Uzman Jokeri">🎓 Uzman</button> </div>
+    <div class="quiz-buttons">
+      <button id="nextButton" aria-label="Sonraki soruya geç">▶️ Sonraki Soru</button> <button id="homeButton" aria-label="Ana menüye dön">🏠 Ana Menüye Dön</button> </div>
+  </div>
+</div>
+
+<script src="sorular.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
