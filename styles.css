@@ -131,11 +131,11 @@ body::before {
 }
 
 .corporate-banner-image {
-  max-width: 70%; /* Resmin boyutunu kontrol et */
-  height: auto;
-  margin-bottom: 50px; /* Butonlarla arasını aç */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Hafif gölge */
-  border-radius: 10px; /* Köşe yuvarlaklığı */
+  max-width: 70%; /* Varsayılan olarak ekranın %70'ini kaplasın */
+  height: auto; /* Oranını koru */
+  margin-bottom: 50px; /* Butonlarla arasını açmak için */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
 }
 
 .corporate-buttons-container {
