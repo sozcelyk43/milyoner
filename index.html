@@ -68,7 +68,16 @@
   </div>
 </div>
 </div>
-
+  
+<div id="wrongAnswerModalEl" class="modal" role="dialog" aria-modal="true" aria-labelledby="wrongAnswerMessage" style="display: none;">
+  <div class="modal-content">
+    <p id="wrongAnswerMessage" aria-live="assertive">❌ Yanlış Cevap!</p>
+    <div id="wrongAnswerButtons" class="modal-buttons-style">
+      <button id="wrongAnswerRetryButton" class="modal-button" aria-label="Yarışmayı yeniden başlat">🔄 Yeniden Oyna</button>
+      <button id="wrongAnswerHomeButton" class="modal-button" aria-label="Ana menüye dön">🏠 Ana Menüye Dön</button>
+    </div>
+  </div>
+</div>
 
 <div id="quizScreenEl" class="container" style="display: none;"> <button id="soundToggle" class="sound-toggle-button" aria-label="Sesi aç veya kapat">🔊</button> <div id="jokerModalEl" class="modal" role="dialog" aria-modal="true" aria-labelledby="jokerMessage"> <div class="modal-content"> <p id="jokerMessage" aria-live="assertive"></p> <div id="modalButtons"></div> </div> </div> <div id="gameOverModalEl" class="modal" role="dialog" aria-modal="true" aria-labelledby="gameOverMessage"> <div class="modal-content">
   <p id="gameOverMessage" aria-live="assertive">❌ Elendiniz!</p>
