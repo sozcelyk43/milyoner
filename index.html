@@ -26,18 +26,20 @@
 <audio id="wrongSound" preload="metadata"> <source src="sounds/wrong.mp3" type="audio/mpeg"> Tarayıcınız ses etiketini desteklemiyor. </audio>
 <audio id="countdownSound" preload="metadata"> <source src="sounds/countdown.mp3" type="audio/mpeg"> Tarayıcınız ses etiketini desteklemiyor. </audio>
 
-<div class="container" id="introScreenEl" style="display: flex;"> <div class="intro-logo">
-  <img src="top-image.png" class="top-image" alt="Yarışma Logosu" loading="lazy" onerror="this.style.display='none'">
-</div>
-  <div class="intro-buttons-container">
-    <button class="rules-button" id="showRulesButton" aria-label="Kuralları göster">📜 Kurallar</button>
-    <button class="start-button" id="startButton" aria-label="Yarışmayı başlat">🎬 Yarışmaya Başla</button>
+<div class="container" id="introScreenEl" style="display: flex;">
+  <div class="corporate-intro-content">
+    <img src="banner.png" alt="Bilgi Şampiyonu" class="corporate-banner-image">
   </div>
+
+  <div class="corporate-buttons-container">
+    <button class="corporate-button start-button" id="startButton" aria-label="Yarışmayı başlat">OYUNA BAŞLA</button>
+    <button class="corporate-button rules-button" id="showRulesButton" aria-label="Kuralları göster">KURALLAR</button>
+  </div>
+
   <div style="position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 12px; color: rgba(255,255,255,0.7);">
     &copy; 2025 Ozcelik inc.
   </div>
 </div>
-
 <div id="rulesModalEl" class="modal" role="dialog" aria-modal="true" aria-labelledby="rulesModalTitle" style="display: none;"> <div class="modal-content">
   <h1 id="rulesModalTitle" class="modal-title">📝 Yarışma Kuralları 📝</h1>
   <div class="rules-container-modal">
