@@ -1,4 +1,365 @@
 const questions = [
+  
+  // Yeni Eklenen Sorular - Zorluk Seviyesi 1
+  {
+    "question": "Hangi ayda Cumhuriyet Bayramı kutlanır?",
+    "options": ["Eylül", "Ekim", "Kasım", "Aralık"],
+    "answer": 1, // Ekim
+    "category": "Tarih",
+    "difficulty": 1
+  },
+  {
+    "question": "Türkiye'nin başkenti hangi şehirdir?",
+    "options": ["İstanbul", "İzmir", "Ankara", "Bursa"],
+    "answer": 2, // Ankara
+    "category": "Coğrafya",
+    "difficulty": 1
+  },
+  {
+    "question": "Güneş Sistemi'ndeki en büyük gezegen hangisidir?",
+    "options": ["Mars", "Dünya", "Jüpiter", "Satürn"],
+    "answer": 2, // Jüpiter
+    "category": "Astronomi",
+    "difficulty": 1
+  },
+  {
+    "question": "Hangi renk gökyüzünü temsil eder?",
+    "options": ["Kırmızı", "Yeşil", "Mavi", "Sarı"],
+    "answer": 2, // Mavi
+    "category": "Genel Kültür",
+    "difficulty": 1
+  },
+  {
+    "question": "Yaz aylarından biri hangisidir?",
+    "options": ["Mart", "Aralık", "Temmuz", "Şubat"],
+    "answer": 2, // Temmuz
+    "category": "Genel Kültür",
+    "difficulty": 1
+  },
+  {
+    "question": "En yaygın kullanılan para birimi nedir?",
+    "options": ["Sterlin", "Euro", "Dolar", "Yen"],
+    "answer": 2, // Dolar
+    "category": "Ekonomi",
+    "difficulty": 1
+  },
+  {
+    "question": "Hangi meyve kırmızı renktedir?",
+    "options": ["Muz", "Elma", "Portakal", "Armut"],
+    "answer": 1, // Elma
+    "category": "Genel Kültür",
+    "difficulty": 1
+  },
+  {
+    "question": "Suyun kaynama derecesi kaç santigrattır?",
+    "options": ["0", "50", "100", "200"],
+    "answer": 2, // 100
+    "category": "Fen",
+    "difficulty": 1
+  },
+  {
+    "question": "Bir haftada kaç gün vardır?",
+    "options": ["5", "6", "7", "8"],
+    "answer": 2, // 7
+    "category": "Genel Kültür",
+    "difficulty": 1
+  },
+  {
+    "question": "Hangi hayvan hızlı koşar?",
+    "options": ["Kaplumbağa", "Salyangoz", "Çita", "Ayı"],
+    "answer": 2, // Çita
+    "category": "Hayvanlar Alemi",
+    "difficulty": 1
+  },
+
+  // Yeni Eklenen Sorular - Zorluk Seviyesi 2
+  {
+    "question": "Atatürk'ün doğum yeri neresidir?",
+    "options": ["Ankara", "İstanbul", "Selanik", "İzmir"],
+    "answer": 2, // Selanik
+    "category": "Tarih",
+    "difficulty": 2
+  },
+  {
+    "question": "Dünyanın en uzun nehri hangisidir?",
+    "options": ["Amazon", "Yangtze", "Nil", "Mississippi"],
+    "answer": 2, // Nil
+    "category": "Coğrafya",
+    "difficulty": 2
+  },
+  {
+    "question": "Vücudumuzdaki en büyük organ hangisidir?",
+    "options": ["Kalp", "Akciğer", "Deri", "Karaciğer"],
+    "answer": 2, // Deri
+    "category": "Biyoloji",
+    "difficulty": 2
+  },
+  {
+    "question": "Türk kahvesinin yanında genellikle ne ikram edilir?",
+    "options": ["Kurabiye", "Şeker", "Lokum", "Çikolata"],
+    "answer": 2, // Lokum
+    "category": "Genel Kültür",
+    "difficulty": 2
+  },
+  {
+    "question": "Pisa Kulesi hangi ülkededir?",
+    "options": ["Fransa", "İspanya", "İtalya", "Almanya"],
+    "answer": 2, // İtalya
+    "category": "Coğrafya",
+    "difficulty": 2
+  },
+  {
+    "question": "Türkiye Cumhuriyeti kaç yılında kurulmuştur?",
+    "options": ["1920", "1922", "1923", "1925"],
+    "answer": 2, // 1923
+    "category": "Tarih",
+    "difficulty": 2
+  },
+  {
+    "question": "Bir asır kaç yıldır?",
+    "options": ["10", "50", "100", "1000"],
+    "answer": 2, // 100
+    "category": "Genel Kültür",
+    "difficulty": 2
+  },
+  {
+    "question": "Hangi kıta en soğuktur?",
+    "options": ["Asya", "Avrupa", "Antarktika", "Afrika"],
+    "answer": 2, // Antarktika
+    "category": "Coğrafya",
+    "difficulty": 2
+  },
+  {
+    "question": "Piyano çalarken hangi tuşlar kullanılır?",
+    "options": ["Teller", "Pedallar", "Tuşlar", "Yaylar"],
+    "answer": 2, // Tuşlar
+    "category": "Müzik",
+    "difficulty": 2
+  },
+  {
+    "question": "Türkiye'nin en yüksek dağı hangisidir?",
+    "options": ["Erciyes", "Uludağ", "Ağrı Dağı", "Süphan"],
+    "answer": 2, // Ağrı Dağı
+    "category": "Coğrafya",
+    "difficulty": 2
+  },
+
+  // Yeni Eklenen Sorular - Zorluk Seviyesi 3
+  {
+    "question": "Hangisi dünyanın yedi harikasından biri değildir?",
+    "options": ["Zeus Heykeli", "Babil'in Asma Bahçeleri", "Efes Artemis Tapınağı", "Eyfel Kulesi"],
+    "answer": 3, // Eyfel Kulesi
+    "category": "Tarih",
+    "difficulty": 3
+  },
+  {
+    "question": "Hangi hayvanın beyni vücudunun en büyük kısmıdır?",
+    "options": ["İnsan", "Fil", "Kalamar", "Mürekkep Balığı"],
+    "answer": 3, // Mürekkep Balığı (Büyük bir orana sahip)
+    "category": "Hayvanlar Alemi",
+    "difficulty": 3
+  },
+  {
+    "question": "Aşık Veysel Şatıroğlu hangi müzik aletini çalmıştır?",
+    "options": ["Keman", "Piyano", "Gitar", "Saz"],
+    "answer": 3, // Saz
+    "category": "Müzik",
+    "difficulty": 3
+  },
+  {
+    "question": "Bir atomun çekirdeğinde ne bulunmaz?",
+    "options": ["Proton", "Nötron", "Elektron", "Kuvark"],
+    "answer": 2, // Elektron (çekirdek etrafında döner)
+    "category": "Fizik",
+    "difficulty": 3
+  },
+  {
+    "question": "Hangi ünlü eseri William Shakespeare yazmamıştır?",
+    "options": ["Romeo ve Juliet", "Hamlet", "Macbeth", "İki Şehrin Hikayesi"],
+    "answer": 3, // İki Şehrin Hikayesi (Charles Dickens yazmıştır)
+    "category": "Edebiyat",
+    "difficulty": 3
+  },
+  {
+    "question": "Hangi ünlü ressam 'Son Akşam Yemeği' tablosuyla bilinir?",
+    "options": ["Pablo Picasso", "Vincent van Gogh", "Michelangelo", "Leonardo da Vinci"],
+    "answer": 3, // Leonardo da Vinci
+    "category": "Sanat",
+    "difficulty": 3
+  },
+  {
+    "question": "Periyodik tabloda 'Au' sembolü hangi elementi temsil eder?",
+    "options": ["Gümüş", "Demir", "Bakır", "Altın"],
+    "answer": 3, // Altın
+    "category": "Kimya",
+    "difficulty": 3
+  },
+  {
+    "question": "15 Temmuz Şehitler Köprüsü'nün eski adı nedir?",
+    "options": ["Atatürk Köprüsü", "Galata Köprüsü", "Boğaziçi Köprüsü", "Fatih Sultan Mehmet Köprüsü"],
+    "answer": 2, // Boğaziçi Köprüsü
+    "category": "Genel Kültür",
+    "difficulty": 3
+  },
+  {
+    "question": "Hangi gezegenin 'Büyük Kırmızı Leke'si vardır?",
+    "options": ["Mars", "Uranüs", "Neptün", "Jüpiter"],
+    "answer": 3, // Jüpiter
+    "category": "Astronomi",
+    "difficulty": 3
+  },
+  {
+    "question": "Kayseri'nin meşhur yiyeceği hangisidir?",
+    "options": ["İskender", "Adana Kebap", "Mantı", "Hamsi Tava"],
+    "answer": 2, // Mantı
+    "category": "Genel Kültür",
+    "difficulty": 3
+  },
+
+  // Yeni Eklenen Sorular - Zorluk Seviyesi 4
+  {
+    "question": "Nobel Edebiyat Ödülü'nü kazanan ilk Türk yazar kimdir?",
+    "options": ["Yaşar Kemal", "Nazım Hikmet", "Halide Edip Adıvar", "Orhan Pamuk"],
+    "answer": 3, // Orhan Pamuk
+    "category": "Edebiyat",
+    "difficulty": 4
+  },
+  {
+    "question": "Dünyanın en derin noktası neresidir?",
+    "options": ["Mariana Çukuru", "Puerto Rico Çukuru", "Java Çukuru", "Milwaukce Derinliği"],
+    "answer": 0, // Mariana Çukuru
+    "category": "Coğrafya",
+    "difficulty": 4
+  },
+  {
+    "question": "Türkiye'nin en kalabalık ilçesi hangisidir?",
+    "options": ["Çankaya", "Keçiören", "Esenyurt", "Gaziosmanpaşa"],
+    "answer": 2, // Esenyurt
+    "category": "Coğrafya",
+    "difficulty": 4
+  },
+  {
+    "question": "Kızıl Gezegen olarak bilinen gezegen hangisidir?",
+    "options": ["Venüs", "Jüpiter", "Satürn", "Mars"],
+    "answer": 3, // Mars
+    "category": "Astronomi",
+    "difficulty": 4
+  },
+  {
+    "question": "Pusulanın icadı hangi uygarlığa aittir?",
+    "options": ["Roma", "Yunan", "Mısır", "Çin"],
+    "answer": 3, // Çin
+    "category": "Tarih",
+    "difficulty": 4
+  },
+  {
+    "question": "Einstein'ın geliştirdiği genel görelilik teorisi ne zaman yayımlanmıştır?",
+    "options": ["1905", "1910", "1915", "1920"],
+    "answer": 2, // 1915
+    "category": "Fizik",
+    "difficulty": 4
+  },
+  {
+    "question": "Leonardo da Vinci'nin 'Mona Lisa' tablosu hangi müzede sergilenmektedir?",
+    "options": ["British Museum", "Metropolitan Museum", "Vatican Museums", "Louvre Müzesi"],
+    "answer": 3, // Louvre Müzesi
+    "category": "Sanat",
+    "difficulty": 4
+  },
+  {
+    "question": "Hangi yazar 'Dönüşüm' adlı eseriyle tanınır?",
+    "options": ["Albert Camus", "Fyodor Dostoyevski", "Gabriel Garcia Marquez", "Franz Kafka"],
+    "answer": 3, // Franz Kafka
+    "category": "Edebiyat",
+    "difficulty": 4
+  },
+  {
+    "question": "Birleşik Krallık'ın başkenti neresidir?",
+    "options": ["Dublin", "Edinburgh", "Cardiff", "Londra"],
+    "answer": 3, // Londra
+    "category": "Coğrafya",
+    "difficulty": 4
+  },
+  {
+    "question": "Hangi Osmanlı padişahı 'Kanuni' unvanıyla anılmıştır?",
+    "options": ["Fatih Sultan Mehmet", "Yavuz Sultan Selim", "II. Mahmut", "Kanuni Sultan Süleyman"],
+    "answer": 3, // Kanuni Sultan Süleyman
+    "category": "Tarih",
+    "difficulty": 4
+  },
+
+  // Yeni Eklenen Sorular - Zorluk Seviyesi 5
+  {
+    "question": "Edebi akımlardan hangisi 'Ben bir eleği delik deşik ederek içinden geçiyorum' sloganıyla bilinir?",
+    "options": ["Sürrealizm", "Kübizm", "Fütürizm", "Dadaizm"],
+    "answer": 3, // Dadaizm
+    "category": "Edebiyat",
+    "difficulty": 5
+  },
+  {
+    "question": "Sicilya'nın aktif yanardağı Etna, hangi ülkededir?",
+    "options": ["Yunanistan", "Türkiye", "İspanya", "İtalya"],
+    "answer": 3, // İtalya
+    "category": "Coğrafya",
+    "difficulty": 5
+  },
+  {
+    "question": "Termodinamiğin ikinci yasası neyi ifade eder?",
+    "options": ["Enerjinin korunumu", "Entropinin artışı", "Sıcaklık farkı", "Basınç ilişkisi"],
+    "answer": 1, // Entropinin artışı
+    "category": "Fizik",
+    "difficulty": 5
+  },
+  {
+    "question": "Antik Yunan'da 'Demokrasi' kelimesi ne anlama geliyordu?",
+    "options": ["Halkın gücü", "Kralların yönetimi", "Filozofların yönetimi", "Askeri yönetim"],
+    "answer": 0, // Halkın gücü
+    "category": "Tarih",
+    "difficulty": 5
+  },
+  {
+    "question": "Hangi uzay aracı Güneş Sistemi dışına çıkan ilk insan yapımı nesnedir?",
+    "options": ["Voyager 1", "Pioneer 10", "New Horizons", "Cassini-Huygens"],
+    "answer": 0, // Voyager 1
+    "category": "Astronomi",
+    "difficulty": 5
+  },
+  {
+    "question": "İnsan genom projesi hangi yılda tamamlanmıştır?",
+    "options": ["1990", "1995", "2000", "2003"],
+    "answer": 3, // 2003
+    "category": "Biyoloji",
+    "difficulty": 5
+  },
+  {
+    "question": "Hangi renkler 'ana renkler' olarak kabul edilir (geleneksel resimde)?",
+    "options": ["Siyah, Beyaz, Gri", "Turuncu, Yeşil, Mor", "Kırmızı, Mavi, Sarı", "Pembe, Mavi, Sarı"],
+    "answer": 2, // Kırmızı, Mavi, Sarı
+    "category": "Sanat",
+    "difficulty": 5
+  },
+  {
+    "question": "Edebiyatta 'Bilinç Akışı' tekniğini yoğun olarak kullanan yazar kimdir?",
+    "options": ["Franz Kafka", "Marcel Proust", "Ernest Hemingway", "James Joyce"],
+    "answer": 3, // James Joyce
+    "category": "Edebiyat",
+    "difficulty": 5
+  },
+  {
+    "question": "Moleküler biyolojinin 'Merkezi Dogması' neyi açıklar?",
+    "options": ["DNA'dan RNA'ya, RNA'dan Proteine bilgi akışı", "Hücre bölünmesi", "Enerji dönüşümü", "Evrim süreci"],
+    "answer": 0, // DNA'dan RNA'ya, RNA'dan Proteine bilgi akışı
+    "category": "Biyoloji",
+    "difficulty": 5
+  },
+  {
+    "question": "Hangi Türk destanında 'Ergenekon' motifi bulunur?",
+    "options": ["Manas", "Alpamış", "Oğuz Kağan", "Ergenekon Destanı"],
+    "answer": 3, // Ergenekon Destanı
+    "category": "Edebiyat",
+    "difficulty": 5
+  },
+  
   {
     "question": "Türkiye'nin başkenti neresidir?",
     "options": ["İstanbul", "Ankara", "İzmir", "Bursa"],
