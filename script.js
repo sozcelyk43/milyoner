@@ -143,7 +143,7 @@ function updateViewAndHistory(newView, newModalId = null, hash = null, replaceSt
   if(introScreenEl) introScreenEl.style.display = (newView === 'intro') ? 'flex' : 'none';
   if(quizScreenEl) quizScreenEl.style.display = (newView === 'quiz') ? 'flex' : 'none';
 
-  [rulesModalEl, exitConfirmModalEl, jokerModalEl, gameOverModalEl].forEach(modal => {
+  [rulesModalEl, exitConfirmModalEl, jokerModalEl, gameOverModalEl, wrongAnswerModalEl].forEach(modal => { // wrongAnswerModalEl eklendi
       if (modal) modal.style.display = 'none';
   });
 
