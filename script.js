@@ -56,6 +56,9 @@ document.addEventListener('touchmove', function(e) { const touchY = e.touches[0]
 const gameState = { selectedQuestions: [], currentQuestion: 0, timer: null, totalPrize: 0, isSoundOn: true };
 
 // DOM Elementleri (ID'ler güncellendi)
+const wrongAnswerModalEl = document.getElementById('wrongAnswerModalEl');
+const wrongAnswerRetryButton = document.getElementById('wrongAnswerRetryButton');
+const wrongAnswerHomeButton = document.getElementById('wrongAnswerHomeButton');
 const introScreenEl = document.getElementById('introScreenEl');
 const quizScreenEl = document.getElementById('quizScreenEl');
 const optionsDiv = document.getElementById("options");
@@ -378,7 +381,31 @@ function confirmAnswer(selectedIndex) {
   const selectedOptionText = gameState.selectedQuestions[gameState.currentQuestion].options[selectedIndex];
   handleShowModal( `Seçiminiz: "${selectedOptionText}"<br>Emin misiniz?`, "confirm", (confirmed) => { if (confirmed) checkAnswer(selectedIndex); else startTimer(); }, 'jokerModalEl', 'cevap-onay');
 }
+function handleWrongAnswer(message) {
+  const modal = wrongAnswerModalEl;
+  const messageElement = modal.querySelector("#wrongAnswerMessage");
+  const retryButton = modal.querySelector("#wrongAnswerRetryButton");
+  const homeButton = modal.querySelector("#wrongAnswerHomeButton");
 
+  clearInterval(gameState.timer); // Zamanlayıcıyı durdur
+  pauseSound(countdownSound); // Geri sayım sesini durdur
+  disableOptions(); // Seçenekleri pasif yap
+  disableJokers(); // Jokerleri pasif yap
+
+  if (messageElement) messageElement.innerHTML = message;
+
+  if (retryButton) retryButton.onclick = () => {
+    modal.style.display = 'none'; // Modalı kapat
+    handleStartGame(); // Oyunu baştan başlat
+  };
+  if (homeButton) homeButton.onclick = () => {
+    modal.style.display = 'none'; // Modalı kapat
+    handleGoHome(true); // Ana sayfaya dön
+  };
+
+  updateViewAndHistory(currentView, 'wrongAnswerModalEl', 'yanlis-cevap'); // Modalı göster
+  if (retryButton) retryButton.focus(); // Yeniden oyna butonuna odaklan
+}
 function checkAnswer(selectedIndex) {
   const q = gameState.selectedQuestions[gameState.currentQuestion];
   const correctIndex = q.answer;
@@ -394,7 +421,8 @@ function checkAnswer(selectedIndex) {
     const correctAnswerText = q.options[correctIndex] || 'Bilinmiyor';
     const statusEl = document.getElementById("status");
     if(statusEl) statusEl.innerText = `❌ Yanlış! Doğru Cevap: ${correctAnswerText}. Toplam Kazanç: ${gameState.totalPrize.toLocaleString()} TL`;
-    handleEndGame('❌ Elendiniz!');
+    // handleEndGame('❌ Elendiniz!'); // Bu satırı yorum satırı yapın veya silin
+    handleWrongAnswer(`❌ Yanlış cevap! Doğru Cevap: ${correctAnswerText}.`); // Yeni fonksiyon çağrısı
   } else {
     gameState.totalPrize = prizeValues[gameState.currentQuestion] || gameState.totalPrize;
     playSound(correctSound);
@@ -407,7 +435,6 @@ function checkAnswer(selectedIndex) {
     }
   }
 }
-
 function handleNextQuestion() {
   gameState.currentQuestion++;
   if(nextButton) nextButton.style.display = 'none';
