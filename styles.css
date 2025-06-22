@@ -9,27 +9,45 @@ html, body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #0c1445;
+  background-color: #0c1445; /* Koyu lacivert arka plan */
   color: #fff;
   font-family: 'Inter', sans-serif;
+  /* Yeni arka plan efekti için */
+  background-image: radial-gradient(circle at center, #1a237e 0%, #0c1445 100%);
+  position: relative; /* Glitter particles için */
 }
+
+/* Arka plan glitter partikülleri */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNSIgaGVpZ2h0PSI1IiB2aWV3Qm94PSIwIDAgNSAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIyLjUiIGN5PSIyLjUiIHI9IjAuNSIgZmlsbD0iI2ZmZiIgLz4KPC9zdmc+'); /* Küçük beyaz noktalar */
+  background-size: 5px 5px;
+  opacity: 0.1; /* Hafif parıltı */
+  pointer-events: none;
+}
+
 
 /* Ekran konteynerleri için genel stil */
 .container {
-  height: 100%; /* Üst elementin (body) yüksekliğini miras al */
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto; /* Konteyner içi içerik taşarsa kendi içinde kaydırma çubuğu oluşur */
+  overflow-y: auto;
   position: relative;
 }
 
 /* Modallar */
 .modal {
-  display: none; /* JavaScript tarafından yönetilecek */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -53,7 +71,7 @@ html, body {
   position: relative;
   animation: fadeIn 0.3s ease-out;
   overflow-y: auto;
-  max-height: 90vh; /* Modalın ekranı çok kaplamaması için */
+  max-height: 90vh;
 }
 
 .modal-title {
@@ -93,48 +111,78 @@ html, body {
 .modal-button.cancel:hover { background-color: #ef5350; }
 
 
-/* Intro Ekranı Stilleri */
+/* Intro Ekranı Stilleri (Kurumsal Tasarım) */
 #introScreenEl {
-  justify-content: center; /* İçeriği dikeyde ortala */
+  justify-content: center;
+  /* Kendi arka planı için daha koyu bir ton */
+  background-color: #0c1445;
+  padding: 0; /* İç padding'i kaldır */
 }
 
-.intro-logo {
-  margin-bottom: 40px;
-}
-
-.top-image {
-  max-width: 80%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-}
-
-.intro-buttons-container {
+.corporate-intro-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Ortayı kaplaması için */
+  padding: 20px; /* İçerik için genel padding */
+  max-width: 900px; /* Maksimum genişlik */
   width: 100%;
-  max-width: 400px;
-  margin-top: 30px;
 }
 
-.start-button, .rules-button {
+.corporate-banner-image {
+  max-width: 70%; /* Resmin boyutunu kontrol et */
+  height: auto;
+  margin-bottom: 50px; /* Butonlarla arasını aç */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Hafif gölge */
+  border-radius: 10px; /* Köşe yuvarlaklığı */
+}
+
+.corporate-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Butonlar arası boşluk */
+  width: 100%;
+  max-width: 350px; /* Butonların maksimum genişliği */
+  margin-top: auto; /* Alt kısma doğru it */
+  margin-bottom: 80px; /* Telif hakkı ile arasına boşluk */
+}
+
+.corporate-button {
   padding: 18px 35px;
-  background-color: #ffcc00;
-  color: #0c1445;
+  background-color: #1a237e; /* Koyu mavi/siyah arka plan */
+  color: #ffcc00; /* Altın rengi yazı */
   font-size: 24px;
   font-weight: bold;
-  border: none;
+  border: 2px solid #ffcc00; /* Altın rengi çerçeve */
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 2px 5px rgba(255, 255, 255, 0.2); /* Hafif 3D efekti */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  text-transform: uppercase; /* Büyük harf */
+  letter-spacing: 1px; /* Harf aralığı */
 }
 
-.start-button:hover, .rules-button:hover {
-  background-color: #ffd633;
+.corporate-button:hover {
+  background-color: #283593; /* Hover'da biraz açılma */
   transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.3);
 }
+
+.corporate-button.rules-button {
+  font-size: 20px; /* Kurallar butonu biraz daha küçük */
+  padding: 15px 30px;
+  background-color: #1a237e; /* Kurallar butonu aynı arka plan */
+  border-color: rgba(255, 204, 0, 0.7); /* Daha şeffaf altın çerçeve */
+  color: rgba(255, 204, 0, 0.9); /* Daha şeffaf altın yazı */
+}
+
+.corporate-button.rules-button:hover {
+  background-color: #283593;
+  border-color: #ffcc00;
+  color: #ffcc00;
+}
+
 
 /* Kurallar Modalındaki Liste */
 .rules-container-modal ul {
@@ -161,21 +209,20 @@ html, body {
 
 /* Quiz Ekranı Stilleri */
 #quizScreenEl {
-  justify-content: space-between; /* Üst, orta ve alt kısımları dikeyde yay */
+  justify-content: space-between;
   padding-top: 40px;
   padding-bottom: 30px;
-  align-items: center; /* Yatayda ortala */
+  align-items: center;
 }
 
 .quiz-top-section {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Elemanları yatayda ortalar */
-  justify-content: center; /* Elemanları dikeyde ortalar */
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  /* Yüksekliği ekranın yaklaşık %20-25'i kadar olsun */
-  height: 20vh; /* Daha az yer kaplasın */
-  min-height: 150px; /* Minimum bir yükseklik */
+  height: 20vh;
+  min-height: 150px;
 }
 
 #timer {
@@ -189,7 +236,7 @@ html, body {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   margin-bottom: 20px;
   flex-shrink: 0;
-  display: flex; /* Sayı içeriğini ortalamak için */
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -221,31 +268,31 @@ html, body {
 
 
 .quiz-middle-section {
-  flex-grow: 1; /* Ortadaki kısım kalan tüm dikey alanı doldursun */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* İçindeki soru ve şıkları ortala */
+  justify-content: center;
   width: 100%;
-  padding: 10px 0; /* Dikey padding azaltıldı */
+  padding: 10px 0;
 }
 
 #question {
   width: 90%;
   max-width: 800px;
-  margin-bottom: 20px; /* Alt boşluk azaltıldı */
+  margin-bottom: 20px;
 }
 
 .question-title {
   font-size: 1.4em;
   font-weight: bold;
-  margin-bottom: 10px; /* Alt boşluk azaltıldı */
+  margin-bottom: 10px;
   color: #ffe600;
   text-align: center;
 }
 
 .question-text {
-  font-size: 1.8em; /* Soru metni biraz küçültüldü */
+  font-size: 1.8em;
   color: white;
   text-align: center;
 }
@@ -254,7 +301,7 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px; /* Şıklar arası boşluk azaltıldı */
+  gap: 10px;
   width: 90%;
   max-width: 900px;
 }
@@ -262,12 +309,12 @@ html, body {
 .option {
   background-color: #1a237e;
   color: white;
-  padding: 12px 20px; /* Padding azaltıldı */
+  padding: 12px 20px;
   border-radius: 15px;
-  width: calc(50% - 15px); /* Daha küçük ekranlarda daha iyi sığması için */
+  width: calc(50% - 15px);
   max-width: 420px;
   border: 3px solid #3949ab;
-  font-size: 18px; /* Font boyutu azaltıldı */
+  font-size: 18px;
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
@@ -309,8 +356,8 @@ html, body {
 }
 
 #status {
-  margin: 15px; /* Margin azaltıldı */
-  font-size: 20px; /* Font boyutu azaltıldı */
+  margin: 15px;
+  font-size: 20px;
   font-weight: bold;
   color: #ffeb3b;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -320,18 +367,18 @@ html, body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px; /* Boşluk azaltıldı */
-  margin: 15px 0; /* Boşluk azaltıldı */
+  gap: 10px;
+  margin: 15px 0;
 }
 
 .joker {
-  padding: 10px 15px; /* Padding azaltıldı */
+  padding: 10px 15px;
   border-radius: 10px;
   background-color: #ffcc00;
   color: #0c1445;
   cursor: pointer;
   font-weight: bold;
-  font-size: 15px; /* Font boyutu azaltıldı */
+  font-size: 15px;
   transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
@@ -351,13 +398,13 @@ html, body {
 .quiz-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px; /* Boşluk azaltıldı */
-  margin-top: 15px; /* Margin azaltıldı */
+  gap: 15px;
+  margin-top: 15px;
 }
 
 #nextButton, #homeButton {
-  padding: 15px 30px; /* Padding azaltıldı */
-  font-size: 20px; /* Font boyutu azaltıldı */
+  padding: 15px 30px;
+  font-size: 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -387,15 +434,15 @@ html, body {
 /* Sound Toggle Button */
 .sound-toggle-button {
   position: absolute;
-  top: 10px; /* Üstten boşluk azaltıldı */
-  right: 10px; /* Sağdan boşluk azaltıldı */
+  top: 10px;
+  right: 10px;
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
   border-radius: 50%;
-  width: 40px; /* Boyut küçültüldü */
-  height: 40px; /* Boyut küçültüldü */
-  font-size: 20px; /* Font boyutu küçültüldü */
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -438,7 +485,7 @@ html, body {
 
 
 /* Landscape Mode for small screens (e.g., mobile landscape) */
-@media (orientation: landscape) and (max-height: 550px) { /* Küçük yükseklikteki yatay ekranlar */
+@media (orientation: landscape) and (max-height: 550px) {
   .landscape-mode {
     flex-direction: row;
     padding: 10px;
@@ -449,107 +496,111 @@ html, body {
 
   .landscape-mode .quiz-top-section {
     width: 15%;
-    min-width: 90px; /* Minimum genişlik biraz daha küçültüldü */
+    min-width: 90px;
     justify-content: flex-start;
-    padding-top: 5px; /* Üstten boşluk azaltıldı */
+    padding-top: 5px;
     height: auto;
     min-height: auto;
   }
 
   .landscape-mode #timer {
-    width: 70px; /* Boyut daha da küçültüldü */
+    width: 70px;
     height: 70px;
     line-height: 70px;
-    font-size: 32px; /* Font boyutu küçültüldü */
-    margin-bottom: 5px; /* Boşluk azaltıldı */
+    font-size: 32px;
+    margin-bottom: 5px;
   }
 
   .landscape-mode #progressBar {
-    width: 70px; /* Boyut küçültüldü */
-    height: 150px; /* Yükseklik azaltıldı */
+    width: 70px;
+    height: 150px;
   }
 
   .landscape-mode .progress-segment {
-    height: 8px; /* Kalınlık azaltıldı */
+    height: 8px;
   }
 
 
   .landscape-mode .quiz-middle-section {
     width: 55%;
-    padding: 5px; /* Padding azaltıldı */
+    padding: 5px;
     justify-content: flex-start;
   }
 
   .landscape-mode #question {
-    margin-bottom: 10px; /* Boşluk azaltıldı */
+    margin-bottom: 10px;
   }
 
   .landscape-mode .question-title {
-    font-size: 1em; /* Font boyutu küçültüldü */
+    font-size: 1em;
   }
 
   .landscape-mode .question-text {
-    font-size: 1.4em; /* Font boyutu küçültüldü */
+    font-size: 1.4em;
   }
 
   .landscape-mode #options {
-    gap: 8px; /* Boşluk azaltıldı */
+    gap: 8px;
   }
 
   .landscape-mode .option {
-    padding: 8px 12px; /* Padding azaltıldı */
-    font-size: 15px; /* Font boyutu küçültüldü */
+    padding: 8px 12px;
+    font-size: 15px;
   }
 
   .landscape-mode .quiz-bottom-section {
     width: 25%;
-    min-width: 130px; /* Minimum genişlik azaltıldı */
-    padding-bottom: 5px; /* Padding azaltıldı */
-    padding-top: 5px; /* Padding azaltıldı */
+    min-width: 130px;
+    padding-bottom: 5px;
+    padding-top: 5px;
   }
 
   .landscape-mode #status {
-    font-size: 14px; /* Font boyutu küçültüldü */
-    margin: 5px 0; /* Boşluk azaltıldı */
+    font-size: 14px;
+    margin: 5px 0;
   }
 
   .landscape-mode #jokers {
-    gap: 6px; /* Boşluk azaltıldı */
-    margin: 8px 0; /* Boşluk azaltıldı */
+    gap: 6px;
+    margin: 8px 0;
   }
 
   .landscape-mode .joker {
-    padding: 6px 10px; /* Padding azaltıldı */
-    font-size: 13px; /* Font boyutu küçültüldü */
+    padding: 6px 10px;
+    font-size: 13px;
   }
 
   .landscape-mode .quiz-buttons {
-    gap: 8px; /* Boşluk azaltıldı */
-    margin-top: 10px; /* Margin azaltıldı */
+    gap: 8px;
+    margin-top: 10px;
   }
 
   .landscape-mode #nextButton,
   .landscape-mode #homeButton {
-    padding: 10px 15px; /* Padding azaltıldı */
-    font-size: 16px; /* Font boyutu küçültüldü */
+    padding: 10px 15px;
+    font-size: 16px;
   }
 
   .landscape-mode .sound-toggle-button {
-    width: 35px; /* Boyut küçültüldü */
+    width: 35px;
     height: 35px;
-    font-size: 18px; /* Font boyutu küçültüldü */
-    top: 5px; /* Boşluk azaltıldı */
-    right: 5px; /* Boşluk azaltıldı */
+    font-size: 18px;
+    top: 5px;
+    right: 5px;
   }
 }
 
 /* Genel Mobil Uyumlu Düzenlemeler (Daha Küçük Ekranlar) */
-@media (max-width: 768px) { /* Tablet portre ve genel mobil */
+@media (max-width: 768px) {
   h1 { font-size: 30px; }
   .rules-container-modal li { font-size: 14px; padding: 10px; }
-  .start-button, .rules-button { font-size: 20px; padding: 15px 30px; }
+  .corporate-banner-image { max-width: 80%; margin-bottom: 30px; } /* Banner boyutu mobile göre */
+  .corporate-buttons-container { max-width: 300px; gap: 20px; }
+  .corporate-button { font-size: 20px; padding: 15px 30px; }
+  .corporate-button.rules-button { font-size: 18px; padding: 12px 25px; }
+
   #timer { width: 90px; height: 90px; line-height: 90px; font-size: 42px; margin-bottom: 15px;}
-  .quiz-top-section {height: 18vh; min-height: 120px;} /* Yükseklik biraz daha azalsın */
+  .quiz-top-section {height: 18vh; min-height: 120px;}
   .question-text { font-size: 1.6em; margin-bottom: 20px; }
   .option { font-size: 17px; padding: 10px 15px; width: calc(100% - 20px); max-width: 350px; }
   #jokers { gap: 8px; margin: 15px 0; }
@@ -561,12 +612,16 @@ html, body {
   .modal-title { font-size: 24px; }
 }
 
-@media (max-width: 480px) { /* Telefon portre */
+@media (max-width: 480px) {
   h1 { font-size: 26px; margin-bottom: 15px; }
   .rules-container-modal li { font-size: 13px; padding: 6px; }
-  .start-button, .rules-button { font-size: 16px; padding: 10px 20px; margin-top: 20px; }
+  .corporate-banner-image { max-width: 90%; margin-bottom: 20px; }
+  .corporate-buttons-container { max-width: 280px; gap: 15px; }
+  .corporate-button { font-size: 18px; padding: 12px 25px; }
+  .corporate-button.rules-button { font-size: 16px; padding: 10px 20px; }
+
   #timer { width: 70px; height: 70px; line-height: 70px; font-size: 34px; margin-bottom: 10px;}
-  .quiz-top-section {height: 16vh; min-height: 100px;} /* Yükseklik daha da azalsın */
+  .quiz-top-section {height: 16vh; min-height: 100px;}
   .question-text { font-size: 1.3em; margin-bottom: 15px; }
   .option { font-size: 15px; padding: 8px 12px; width: calc(100% - 16px); }
   #jokers { gap: 6px; margin: 10px 0; }
